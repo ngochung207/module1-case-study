@@ -22,18 +22,13 @@ class ProductManger {
     deleteProduct(codeProduct){
         this.stock.split(codeProduct,1);
     }
-    // Kiểm tra tồn kho, trả ra kết quả là số lượng hàng trong kho
-    checkQuantityInStock(codeProduct){
+    // Lấy tồn kho, trả ra kết quả là số lượng hàng trong kho
+    getQuantityInStock(codeProduct){
         let sum = 0;
-        if (this.stock.length){
-            this.stock.forEach(element => {
-                if(element.code === codeProduct){
-                    sum = element.amount;
-                    break; // ????
-                }
-            })
-        }
-        return sum;
+        if (this.checkCodeInStock(codeProduct)){
+            sum = this.stock[this.getIndexProductInStock(codeProduct)].amount;
+            return sum;
+        } else return sum;
     }
     // Kiểm tra mã hàng tồn tại trong kho hay không.
     checkCodeInStock(code){
