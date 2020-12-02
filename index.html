@@ -6,29 +6,6 @@
     <script src="product.js"></script>
 </head>
 <body>
-<img src="" alt="" id="id-img1">
-<img src="" alt="" id="id-img2">
 
-<input type="file" id="fileElem" style="display: none">
-<button id="fileSelect">Select some file</button>
-
-<script src="main.js"></script>
-<script>
-const fileSelect = document.getElementById('fileSelect');
-const fileElem = document.getElementById('fileElem');
-
-fileSelect.addEventListener('click', event => {
-  if(fileElem){
-      fileElem.click();
-  }
-},false);
-
-fileElem.addEventListener('change', event => {
-    for (let i = 0; i < fileElem.files.length; i++) {
-        console.log(fileElem.files[0].name)
-    }
-},false);
-
-</script>
 </body>
 </html>
