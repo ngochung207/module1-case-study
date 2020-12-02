@@ -6,13 +6,10 @@ class ProductManger {
     /** Thêm sản phẩm mới.
      *  Kiểm tra mã sản phẩm mới đưa vào đã có trong stock chưa.
      *  Nếu chưa có thêm mới ngay.
-     *  Nếu đã có thì cộng dồn vào mã đã tồn tại trong kho.
+     *  Nếu đã có thì CỘNG DỒN vào mã đã tồn tại trong kho.
      */
     addProduct(newProduct) {
-        let result = this.stock.some(element => {
-          return element.code  === newProduct.code
-        })
-        if (result){
+        if (this.checkCodeInStock(newProduct.code)){
             this.stock.map(element => {
                 if(element.code === newProduct.code){
                     element.amount += newProduct.amount;
@@ -22,20 +19,42 @@ class ProductManger {
     }
 
     // Xóa sản một sản phẩm. Tham số truyền vào là id sản phẩm
-    deleteProduct(idProduct){
-        this.stock.split(idProduct,1);
+    deleteProduct(codeProduct){
+        this.stock.split(codeProduct,1);
     }
     // Kiểm tra tồn kho, trả ra kết quả là số lượng hàng trong kho
-    quantityInStock(idProduct){
+    checkQuantityInStock(codeProduct){
         let sum = 0;
         if (this.stock.length){
             this.stock.forEach(element => {
-                if(element.code === idProduct){
+                if(element.code === codeProduct){
                     sum = element.amount;
-                    break;
+                    break; // ????
                 }
             })
         }
         return sum;
+    }
+    // Kiểm tra mã hàng tồn tại trong kho hay không.
+    checkCodeInStock(code){
+        let size = this.stock.length;
+        for (let index = 0; index < size; index++){
+            if(this.stock[index].code === code){
+                return true;
+            }
+        }
+        return false;
+    }
+    // Lấy ra thông tin vị trí của sản phẩm trong kho.
+    getIndexProductInStock(codeProduct) {
+        if (this.checkCodeInStock(codeProduct)) {
+            let size = this.stock.length;
+            for (let index = 0; index < size; index++) {
+                if (this.stock[index].code === codeProduct) {
+                    return index;
+                }
+            }
+        }
+        return -1;
     }
 }
