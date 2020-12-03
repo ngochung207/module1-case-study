@@ -1,0 +1,31 @@
+.flex-container{
+    display: flex;
+}
+.block-menu-left{
+    text-align: left;
+    border-style: groove;
+    width: 250px;
+}
+.block-menu-right{
+
+}
+
+.id-buy{
+    display: flex;
+    justify-content: left;
+}
+.id-buy-line{
+    border-radius: 4px;
+    margin: 5px 0 9px 0;
+    padding: 0 10px;
+}
+.id-info-block{
+    display: flex;
+    justify-content: left;
+}
+.id-info-text{
+    flex: max-content;
+}
+.id-info-name{
+    min-width: 100px;
+}
