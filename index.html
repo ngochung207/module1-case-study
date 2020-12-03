@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Quản lý bán hàng</title>
     <link rel="stylesheet" href="main.css">
+
 </head>
 <body>
 <h1>Quản Lý Bán Hàng</h1>
@@ -15,40 +16,42 @@
                     <li>User</li>
                 </ul>
         </ul>
-        <ul>
-            <li>Nhập hàng</li>
-                <ul>
-                    <li>Nhập mua</li>
-                    <li>Nhập hàng trả lại</li>
-                </ul>
-        </ul>
-        <ul>
-            <li>Bán hàng</li>
-                <ul>
-                    <li>Bán buôn</li>
-                    <li>Bán lẻ</li>
-                </ul>
-        </ul>
-        <ul>
-            <li>Quản lý hàng hóa</li>
-                <ul>
-                    <li>Update giá bán</li>
-                    <li>Update khuyến mãi</li>
-                </ul>
-        </ul>
-        <ul>
-            <li>Báo cáo</li>
-                <ul>
-                    <li>Báo cáo doanh thu</li>
-                    <li>Báo cáo tồn kho</li>
-                </ul>
-        </ul>
-        <ul>
-            <li>Bảo hành</li>
+        <div id="login-true" style="display: none">
             <ul>
-                <li>Thông tin bảo hành</li>
+                <li>Nhập hàng</li>
+                    <ul>
+                        <li>Nhập mua</li>
+                        <li>Nhập hàng trả lại</li>
+                    </ul>
             </ul>
-        </ul>
+            <ul>
+                <li>Bán hàng</li>
+                    <ul>
+                        <li>Bán buôn</li>
+                        <li>Bán lẻ</li>
+                    </ul>
+            </ul>
+            <ul>
+                <li>Quản lý hàng hóa</li>
+                    <ul>
+                        <li>Update giá bán</li>
+                        <li>Update khuyến mãi</li>
+                    </ul>
+            </ul>
+            <ul>
+                <li>Báo cáo</li>
+                    <ul>
+                        <li>Báo cáo doanh thu</li>
+                        <li>Báo cáo tồn kho</li>
+                    </ul>
+            </ul>
+            <ul>
+                <li>Bảo hành</li>
+                <ul>
+                    <li>Thông tin bảo hành</li>
+                </ul>
+            </ul>
+        </div>
     </div>
     <div class="block-menu-right">
         <fieldset style="width: 600px; height: 400px">
@@ -56,13 +59,16 @@
             <div class="id-info" style="display: block">
                 <div class="id-info-block">
                     <lable class="id-info-name">User Name:</lable>
-                    <input type="text" class="id-info-text">
+                    <input type="text" class="id-info-text" id="id-info-user">
                 </div>
                 <div class="id-info-block">
                     <lable class="id-info-name">Pass World:</lable>
-                    <input type="text" class="id-info-text">
+                    <input type="password" class="id-info-text" id="id-info-pass">
                 </div>
-                <button>Login</button>
+                <div class="id-info-button">
+                    <button class="id-info-button-log" onclick="buttonSignUp(document.getElementById('id-info-user').value,document.getElementById('id-info-pass').value);">Sign Up</button>
+                    <button class="id-info-button-log" onclick="buttonLogin(document.getElementById('id-info-user').value,document.getElementById('id-info-pass').value);">Login</button>
+                </div>
             </div>
             <div class="id-buy" style="display: none">
                 <div class="id-buy-line 1">
@@ -97,6 +103,8 @@
 <script src="product.js"></script>
 <script src="order.js"></script>
 <script src="promotion.js"></script>
+<script src="user.js"></script>
+<!--<script src="main-test.js"></script>-->
 <script src="main.js"></script>
 </body>
 </html>

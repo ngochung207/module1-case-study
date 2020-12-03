@@ -1,21 +1,20 @@
 class User{
-    constructor(_userName,_fullName,_email, _pass) {
+    constructor(_userName, _pass) {
         this.userName = _userName;
-        this.fullName = _fullName;
-        this.email = _email;
-        this.pass = _pass
+        this.pass = _pass;
     }
 }
 
 class UserInfo{
-    constructor(){
+    constructor (){
         this.userInfo = [];
     }
-    // Kiểm tra login. True: đăng nhập đung. False: đăng nhập sai
-    /**
-     * Cho phép đăng nhập nếu user và pass khớp nhau.
-     */
+
     getLogin(user, pass){
+        // Kiểm tra login. True: đăng nhập đung. False: đăng nhập sai
+        /**
+         * Cho phép đăng nhập nếu user và pass khớp nhau.
+         */
         let key = user + pass;
         let result = false;
         this.userInfo.some(element => {
@@ -25,6 +24,10 @@ class UserInfo{
             }
         })
         return result;
+    }
+
+    addUserInfo(newUser){
+        this.userInfo.push(newUser);
     }
     // Thay đổi email
     // Thay đổi full name

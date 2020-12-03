@@ -1,44 +1,40 @@
-
 function uuidv4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
 }
+// Khởi tạo các biến làm việc
+const today = new Date();
+const time = today.getDate() +"/" + (today.getMonth()+1) + "/" + today.getFullYear()
+const userManager = new UserInfo();
 
-let today = new Date();
-let time = today.getDate() +"/" + (today.getMonth()+1) + "/" + today.getFullYear()
-
-// Test class Product
-// Tạo mới sản phẩm
-let newP1 = new Product("HH001","00000001","Nokia 1100i",'Vang','./image/imge_01.png','new',200,20,18);
-let newP2 = new Product("HH002","00000002","Nokia 1100i",'Trang','./image/imge_02.png','new',200,20,18);
-// Test class ProductManger
-// Tạo mới quản lý sản phẩm
-let managerProduct = new ProductManager();
-managerProduct.addProduct(newP1);
-managerProduct.addProduct(newP2);
-console.log(managerProduct)
-// Test class Cart
-// Tạo mới giỏ hàng.
-let newCart1 = new Cart(uuidv4(), time);
-let newCart2 = new Cart(uuidv4(), time);
-// Thêm hàng vào giỏ hàng
-newCart1.getAddCart(newP1.code, newP1.name, 2)
-newCart2.getAddCart(newP2.code, newP2.name, 10)
-// console.log(newCart1,newCart2)
-
-// Test class OrderManager
-// Tạo mới quản lý các đơn hàng từ giỏ hàng.
-let managerOrder = new OrderManager();
-managerOrder.addToOrderManager(newCart1);
-managerOrder.addToOrderManager(newCart2);
-console.log(managerOrder)
-// Test khuyen mai
-let promotion1 = new Promotion(uuidv4(),'Khuyen mai thang 12','Khuyen mai thang tet',0.1,'2020-10-01','2020-12-31');
-console.log(promotion1)
-
-
-
-
-
+function buttonSignUp(user_text, pass_text){
+    /** Tạo nút đăng ký
+     * thêm dữ liệu người dùng vào dataManagerUser
+     */
+    let newUser = new User(user_text, pass_text);
+    userManager.addUserInfo(newUser);
+    clearInput();
+    alert('Dang ky thanh cong')
+}
+function clearInput(){
+    /**
+     * Làm mới ô đăng nhập
+     */
+    document.getElementById('id-info-user').value = ''
+    document.getElementById('id-info-pass').value = ''
+}
+function buttonLogin(user_text, pass_text){
+    /**
+     *  Tạo nút đăng nhập
+     *  Đăng nhập thành công hiển thị full menu cho người dùng làm việc
+     */
+    if(userManager.getLogin(user_text,pass_text)){
+        document.getElementById('login-true').style.display = "block";
+        alert('Dang nhap thanh cong')
+    } else {
+        confirm('Dang nhap lai')
+    }
+    clearInput();
+}
