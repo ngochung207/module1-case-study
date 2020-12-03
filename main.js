@@ -34,6 +34,11 @@ let managerOrder = new OrderManager();
 managerOrder.addToOrderManager(newCart1);
 managerOrder.addToOrderManager(newCart2);
 console.log(managerOrder)
+// Test khuyen mai
+let promotion1 = new Promotion(uuidv4(),'Khuyen mai thang 12','Khuyen mai thang tet','2020-10-01','2020-10-31');
+console.log(promotion1.code)
+
+
 
 
 

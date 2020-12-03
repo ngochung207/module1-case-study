@@ -82,6 +82,5 @@ class ProductManager {
         // Xóa sản một sản phẩm. Tham số truyền vào là id sản phẩm
         this.stock.split(codeProduct,1);
     }
-
 }
 
