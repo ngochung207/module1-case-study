@@ -12,7 +12,7 @@ class Product {
     }
 }
 
-class ProductManger {
+class ProductManager {
     constructor() {
         this.stock = [];
     }
