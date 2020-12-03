@@ -42,6 +42,15 @@ class ProductManger {
         }
     }
 
+    getQuantityInStock(codeProduct){
+        // Lấy tồn kho, trả ra kết quả là số lượng hàng trong kho
+        let sum = 0;
+        if (this.checkCodeInStock(codeProduct)){
+            sum = this.stock[this.getIndexProductInStock(codeProduct)].amount;
+            return sum;
+        } else return sum;
+    }
+
     checkCodeInStock(code){
         // Kiểm tra mã hàng tồn tại trong kho hay không.
         let size = this.getLengthStock();
@@ -58,29 +67,20 @@ class ProductManger {
          *  Kiểm tra mã sản phẩm mới đưa vào đã có trong stock chưa.
          *  Nếu chưa có thêm mới ngay.
          *  Nếu đã có thì CỘNG DỒN vào mã đã tồn tại trong kho.
-         *  ?? sửa lại chỗ này cho phép truyền vào một mảng các sản phẩm
          */
-        if (this.checkCodeInStock(newProduct.code)){
-            this.stock.map(element => {
-                if(element.code === newProduct.code){
-                    element.amount += newProduct.amount;
-                }
-            })
-        } else this.stock.push(newProduct)
+        if (newProduct.amount >= 0) {
+            if (this.checkCodeInStock(newProduct.code)) {
+                this.stock.map(element => {
+                    if (element.code === newProduct.code) {
+                        element.amount += newProduct.amount;
+                    }
+                })
+            } else this.stock.push(newProduct)
+        } else alert("số lượng không được âm")
     }
-
     deleteProduct(codeProduct){
         // Xóa sản một sản phẩm. Tham số truyền vào là id sản phẩm
         this.stock.split(codeProduct,1);
-    }
-
-    getQuantityInStock(codeProduct){
-        // Lấy tồn kho, trả ra kết quả là số lượng hàng trong kho
-        let sum = 0;
-        if (this.checkCodeInStock(codeProduct)){
-            sum = this.stock[this.getIndexProductInStock(codeProduct)].amount;
-            return sum;
-        } else return sum;
     }
 
 }
