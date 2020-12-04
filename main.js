@@ -10,6 +10,7 @@ const time = today.getDate() +"/" + (today.getMonth()+1) + "/" + today.getFullYe
 const userManager = new UserInfo();
 
 function buttonSignUp(user_text, pass_text){
+    document.getElementById("username")
     /** Tạo nút đăng ký
      * thêm dữ liệu người dùng vào dataManagerUser
      */
