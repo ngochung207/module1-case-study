@@ -4,107 +4,109 @@
     <meta charset="UTF-8">
     <title>Quản lý bán hàng</title>
     <link rel="stylesheet" href="main.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Quản Lý Bán Hàng</h1>
-<div class="flex-container">
-    <div class="block-menu-left">
-        <ul>
-            <li>Thông tin chung</li>
-                <ul>
-                    <li>User</li>
-                </ul>
-        </ul>
-        <div id="login-true" style="display: none">
-            <ul>
-                <li>Nhập hàng</li>
-                    <ul>
-                        <li>Nhập mua</li>
-                        <li>Nhập hàng trả lại</li>
-                    </ul>
-            </ul>
-            <ul>
-                <li>Bán hàng</li>
-                    <ul>
-                        <li>Bán buôn</li>
-                        <li>Bán lẻ</li>
-                    </ul>
-            </ul>
-            <ul>
-                <li>Quản lý hàng hóa</li>
-                    <ul>
-                        <li>Update giá bán</li>
-                        <li>Update khuyến mãi</li>
-                    </ul>
-            </ul>
-            <ul>
-                <li>Báo cáo</li>
-                    <ul>
-                        <li>Báo cáo doanh thu</li>
-                        <li>Báo cáo tồn kho</li>
-                    </ul>
-            </ul>
-            <ul>
-                <li>Bảo hành</li>
-                <ul>
-                    <li>Thông tin bảo hành</li>
-                </ul>
-            </ul>
+<ul class="nav nav-pills">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hệ thống</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Người dùng</a>
+            <a class="dropdown-item" href="#">Phân quyền</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Bảo trì dữ liệu</a>
+            <a class="dropdown-item" href="#">Khóa dữ liệu</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Tiện ích</a>
         </div>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mua hàng</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Nhập mua mới</a>
+            <a class="dropdown-item" href="#">Nhập hàng trả lại</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Báo cáo giá nhập mua</a>
+            <a class="dropdown-item" href="#">Báo cáo hàng trả lại</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Bán hàng</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Bán lẻ</a>
+            <a class="dropdown-item" href="#">Bán buôn</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Báo cáo bán hàng theo giá bán</a>
+            <a class="dropdown-item" href="#">Báo cáo bán hàng theo mặt hàng</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Khuyến mãi</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Chương trình khuyến mãi</a>
+            <a class="dropdown-item" href="#">Quản lý khuyến mãi</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Báo cáo giá trị khuyến mãi</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Báo cáo</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Báo cáo nhập xuất tồn</a>
+            <a class="dropdown-item" href="#">Bán cáo kết quả kinh doanh</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Bảo hành</a>
+            <a class="dropdown-item" href="#">Báo cáo hàng bảo hành</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+    </li>
+</ul>
+
+<div class="container-sm" style="width: 25%">
+    <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" placeholder="Enter email" id="email">
     </div>
-    <div class="block-menu-right">
-        <fieldset style="width: 600px; height: 400px">
-            <legend>User</legend>
-            <div class="id-info" style="display: block">
-                <div class="id-info-block">
-                    <lable class="id-info-name">User Name:</lable>
-                    <input type="text" class="id-info-text" id="id-info-user">
-                </div>
-                <div class="id-info-block">
-                    <lable class="id-info-name">Pass World:</lable>
-                    <input type="password" class="id-info-text" id="id-info-pass">
-                </div>
-                <div class="id-info-button">
-                    <button class="id-info-button-log" onclick="buttonSignUp(document.getElementById('id-info-user').value,document.getElementById('id-info-pass').value);">Sign Up</button>
-                    <button class="id-info-button-log" onclick="buttonLogin(document.getElementById('id-info-user').value,document.getElementById('id-info-pass').value);">Login</button>
-                </div>
-            </div>
-            <div class="id-buy" style="display: none">
-                <div class="id-buy-line 1">
-                    <lable>Mã hàng</lable>
-                    <input type="text"/>
-                    <lable>Tên hàng</lable>
-                    <input type="text">
-                    <lable>IMEI</lable>
-                    <input type="text">
-                </div>
-                <div class="id-buy-line 2">
-                    <lable>Số lượng nhập</lable>
-                    <input type="text">
-                    <lable>Giá nhập</lable>
-                    <input type="text">
-                    <lable>Type</lable>
-                    <select name="" id="" style="width: 177px; height: 21px">
-                        <option value="1">New</option>
-                        <option value="2">Old</option>
-                    </select>
-                </div>
-                <div class="id-buy-line 3">
-                    <lable>Mô tả sản phẩm</lable>
-                    <textarea name="" id="" cols="25" rows="5"></textarea>
-                    <lable>Hình ảnh</lable>
-                    <p></p>
-                </div>
-            </div>
-        </fieldset>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" placeholder="Enter password" id="pwd">
+    </div>
+<!--    <div class="form-group form-check">-->
+<!--        <label class="form-check-label">-->
+<!--            <input class="form-check-input" type="checkbox"> Remember me-->
+<!--        </label>-->
+<!--    </div>-->
+    <div>
+        <button type="button" class="btn btn-primary" onclick="buttonSignUp(document.getElementById('email').value,document.getElementById('pwd').value);">Sign up</button>
+        <button type="button" class="btn btn-primary" onclick="buttonLogin(document.getElementById('email').value,document.getElementById('pwd').value);">Login</button>
     </div>
 </div>
+
+<form style="width: 25%" id="gr1">
+    <div class="form-group">
+        <label for="formGroupExampleInput">Mã hàng</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput2">Tên hàng</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+    </div>
+</form>
+
 <script src="product.js"></script>
 <script src="order.js"></script>
 <script src="promotion.js"></script>
 <script src="user.js"></script>
-<!--<script src="main-test.js"></script>-->
 <script src="main.js"></script>
 </body>
 </html>

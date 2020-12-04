@@ -22,8 +22,8 @@ function clearInput(){
     /**
      * Làm mới ô đăng nhập
      */
-    document.getElementById('id-info-user').value = ''
-    document.getElementById('id-info-pass').value = ''
+    document.getElementById('email').value = ''
+    document.getElementById('pwd').value = ''
 }
 function buttonLogin(user_text, pass_text){
     /**
@@ -31,10 +31,14 @@ function buttonLogin(user_text, pass_text){
      *  Đăng nhập thành công hiển thị full menu cho người dùng làm việc
      */
     if(userManager.getLogin(user_text,pass_text)){
-        document.getElementById('login-true').style.display = "block";
+        // document.getElementById('login-true').style.display = "block";
         alert('Dang nhap thanh cong')
     } else {
         confirm('Dang nhap lai')
     }
     clearInput();
+}
+
+function showPageProduct(){
+   alert("tinh nang mua hang")
 }
