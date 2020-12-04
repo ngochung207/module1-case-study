@@ -33,7 +33,7 @@ function buttonLogin(user_text, pass_text){
      */
     if(userManager.getLogin(user_text,pass_text)){
         // document.getElementById('login-true').style.display = "block";
-        alert('Dang nhap thanh cong')
+        window.location.href = './home.html'
     } else {
         confirm('Dang nhap lai')
     }
