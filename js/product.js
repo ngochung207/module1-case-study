@@ -13,6 +13,7 @@ class Product {
 }
 
 class ProductManager {
+    // Quản lý sản phẩm của tất cả các kho.
     constructor() {
         this.stock = [];
     }
