@@ -71,17 +71,52 @@
             </div>
         </li>
     </ul>
+
+
 </head>
 <body>
-<form style="width: 25%" id="gr1">
+<div style="width: 25%" id="gr1">
     <div class="form-group">
         <label for="formGroupExampleInput">Mã hàng</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="HH001">
     </div>
     <div class="form-group">
         <label for="formGroupExampleInput2">Tên hàng</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nokia 110i">
     </div>
-</form>
+    <div class="form-group">
+        <label for="formGroupExampleInput3">IMEI</label>
+        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="45694-0294-002-01">
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput6">Mô tả sản phẩm</label>
+        <input type="text" class="form-control" id="formGroupExampleInput6" placeholder="Color: Black">
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput4">Số lượng nhập</label>
+        <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Số lượng thực nhập">
+    </div>
+    <div class="form-group input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Giá nhập vào</span>
+        </div>
+        <input type="text" class="form-control" id="formGroupExampleInput5" aria-label="Amount (to the nearest dollar)">
+        <div class="input-group-append">
+            <span class="input-group-text">.00</span>
+        </div>
+    </div>
+    <div class="card" style="width: 20rem;">
+        <img id="img" src= "./image/default-image.jpg" class="img-thumbnail" alt="">
+        <div>
+            <input type="file" class="btn btn-secondary" id="strImg" accept=".jpg,.png" onchange="getFileName();" multiple/>
+        </div>
+    </div>
+</div>
+
+<script src="product.js"></script>
+<script src="promotion.js"></script>
+<script src="order.js"></script>
+<script src="user.js"></script>
+<script src="main.js"></script>
 </body>
 </html>

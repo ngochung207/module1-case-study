@@ -40,6 +40,9 @@ function buttonLogin(user_text, pass_text){
     clearInput();
 }
 
-function showPageProduct(){
-   alert("tinh nang mua hang")
+function getFileName(){
+    let fileElement = document.getElementById('strImg');
+    let nameImg = fileElement.files[0].name;
+    let srcElement = document.getElementById('img');
+    srcElement.src = "./image/" + nameImg;
 }
