@@ -116,10 +116,10 @@ function showAllProduct(){
         '    <td>' + arr.detail[0].description + '</td>\n' +
         '    <td><img src=' + arr.detail[0].img +' alt=""></td>\n' +
         '    <td>' + arr.detail[0].price + '</td>\n' +
-        '    <td><button>Mua</button></td>\n' +
+        '    <td><button class="btn btn-primary btn-sm">Mua</button></td>\n' +
         '    <td>\n' +
-        '        <button style="width: 60px; margin-right: 10px">Edit</button>\n' +
-        '        <button style="width: 60px">Delete</button>\n' +
+        '        <button style="width: 60px; margin-right: 10px" class="btn btn-primary btn-sm">Edit</button>\n' +
+        '        <button style="width: 70px" class="btn btn-primary btn-sm">Delete</button>\n' +
         '    </td>\n' +
         '</tr>'
     }
