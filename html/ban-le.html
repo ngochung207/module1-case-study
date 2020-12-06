@@ -91,6 +91,47 @@
         </tbody>
     </table>
 </div>
+<!--Hộp hội thoại mua sản phẩm-->
+<div class="modal fade" id="dialog1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Đơn đặt hàng</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div style="display: flex; flex-direction: column">
+                    <div style="display: flex; flex-direction: row">
+                        <span style="margin-right: 5px; margin-bottom: 5px; margin-top: 5px; min-width: 50%">Số lượng muốn mua:</span>
+                        <input type="number" id="amount" style="flex: 1; margin-bottom: 5px; margin-top: 5px; text-align: right" onchange="payment_();"/>
+                    </div>
+                    <div style="display: flex">
+                        <span style="min-width: 50%">Đơn giá</span>
+                        <span style="flex: 1; text-align: right" id="price"></span>
+                    </div>
+                    <div style="display: flex">
+                        <span style="min-width: 50%">Chiết khấu</span>
+                        <span style="flex: 1; text-align: right" id="purchase"></span>
+                    </div>
+                    <div style="display: flex">
+                        <span style="min-width: 50%">Tổng thanh toán</span>
+                        <span style="flex:1;text-align: right" id="payment"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy đơn</button>
+                <button type="button" class="btn btn-primary">Đặt đơn</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 <script src="../js/user.js"></script>
 <script src="../js/product.js"></script>
 <script src="../js/order.js"></script>
@@ -101,5 +142,6 @@
 <script>
     showAllProduct();
 </script>
+
 </body>
 </html>

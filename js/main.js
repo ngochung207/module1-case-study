@@ -116,7 +116,7 @@ function showAllProduct(){
         '    <td>' + arr.detail[0].description + '</td>\n' +
         '    <td><img src=' + arr.detail[0].img +' alt=""></td>\n' +
         '    <td>' + arr.detail[0].price + '</td>\n' +
-        '    <td><button class="btn btn-primary btn-sm">Mua</button></td>\n' +
+        '    <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dialog1">Mua</button></td>\n' +
         '    <td>\n' +
         '        <button style="width: 60px; margin-right: 10px" class="btn btn-primary btn-sm">Edit</button>\n' +
         '        <button style="width: 70px" class="btn btn-primary btn-sm">Delete</button>\n' +
@@ -124,4 +124,20 @@ function showAllProduct(){
         '</tr>'
     }
     document.getElementById("list").innerHTML= content;
+}
+
+function payment_(){
+    let current = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' });
+    let mount = parseInt(document.getElementById('amount').value);
+    if (mount > 0) {
+        let price = 2000000;
+        let purchase_ = 500000;
+        document.getElementById('price').innerHTML = current.format(price)
+        document.getElementById('purchase').innerHTML = current.format(purchase_)
+        document.getElementById('payment').innerHTML = current.format(mount * price - purchase_)
+    } else {
+        document.getElementById('price').innerHTML = current.format(0)
+        document.getElementById('purchase').innerHTML = current.format(0)
+        document.getElementById('payment').innerHTML = current.format(0)
+    }
 }
