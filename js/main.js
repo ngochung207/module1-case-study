@@ -14,6 +14,8 @@ let userManager = new UserInfo();
 let productManager = new ProductManager();
 // Khởi tạo đối tượng quản lý giỏ hàng.
 let cartManager = new OrderManager();
+// Khởi tạo đối tượng quản lý mua hàng.
+let purchaseOrderManager = new PurchaseOrderManager();
 
 
 function buttonSignUp(user_text, pass_text){
@@ -99,8 +101,14 @@ function refresh(){
 function saveInfo(){
     if (checkInput()) {
         let info = getValueOfPurchase();
+
         let product = new Product(info.code, info.imei, info.name, info.description, info.img, '', info.amount, '', info.cost);
         productManager.addProduct(product);
+
+        let purchase = new Purchase(uuidv4(),info.date);
+        purchase.purchaseOrder(product);
+
+        purchaseOrderManager.addProduct(purchase);
         refresh();
 
     } else {

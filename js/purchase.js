@@ -10,3 +10,13 @@ class Purchase{
         this.detail.push(product)
     }
 }
+
+class PurchaseOrderManager{
+    constructor(){
+        this.detail = [];
+    }
+
+    addProduct(purchase){
+        this.detail.push(purchase)
+    }
+}
