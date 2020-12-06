@@ -4,6 +4,7 @@ function uuidv4() {
         return v.toString(16);
     });
 }
+
 // Khởi tạo các biến làm việc
 const today = new Date();
 const time = today.getDate() +"/" + (today.getMonth()+1) + "/" + today.getFullYear()
@@ -16,7 +17,6 @@ let cartManager = new OrderManager();
 
 
 function buttonSignUp(user_text, pass_text){
-    document.getElementById("username")
     /** Tạo nút đăng ký
      * thêm dữ liệu người dùng vào dataManagerUser
      */
