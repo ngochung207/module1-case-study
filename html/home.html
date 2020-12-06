@@ -71,34 +71,43 @@
             </div>
         </li>
     </ul>
+
 </head>
 <body>
 <h4>Bản Mô Tả Tính Năng</h4><br>
 <h5>Hệ thống quản lý bán hàng</h5>
+<ul>
+    <li style="list-style-type: square"><a href="https://github.com/ngochung207/module1-case-study">Link git dự án.</a></li>
+    <li style="list-style-type: square"><a href="https://ngochung207-module1.netlify.app/">Netlify dự án</a></li>
+</ul>
 <ol>
-<li><h6>Đăng nhập</h6></li>
+    <b><li>Phân hệ đăng ký / đăng nhập</li></b>
 <pre>
-    <b>1. Phân hệ đăng ký / đăng nhập</b>
-        Khi mở trang web người dùng được đưa đến trang đăng nhập/đăng ký.
-        <b>Điền tên đăng nhập và mật khẩu bấm đăng ký</b>
-        --> Hiện thông báo đăng ký thành công.
-        --> Làm mới ô input.
-        <b>Điền tên đã đăng ký và mật khẩu bấm nút đăng nhập.</b>
-        --> Kiểm tra tên và mật khẩu có khớp với đã đăng ký không.
-            --> Nếu đúng đưa người dùng tới trang Home.
-            --> Nếu sai thông báo đăng nhập lại.
-    <b>2. Phân hệ mua hàng</b>
-    <i>Mục đích: Cho phép người dùng nhập thông tin hàng hóa của mỗi lần nhập hàng. Và đưa dữ liệu vào quản lý bởi đối tượng "productManager"</i>
-        --> <b>Mỗi lần nhập hàng được gắn một ID định danh.</b>
-            Thu thập các thông tin của 1 lần nhập hàng bao gồm:
-                - Ngày tháng, Mã hàng, Tên hàng, Số IMEI, Mô tả sản phẩm, Số lượng nhập, Giá nhập, Hình ảnh.
-        --> <b>Khi bấm lưu thông tin.</b>
-            Thông tin hệ thống sẽ khởi tạo một đối tượng mới <i>"new Product".</i>
-            Đồng thời gọi tới phương thức <i>"addProduct"</i> của đối tượng quản lý sản phẩm <i>"productManager"</i>
+Khi mở trang web người dùng được đưa đến trang đăng nhập/đăng ký.
+<b>Điền tên đăng nhập và mật khẩu bấm đăng ký</b>
+--> Hiện thông báo đăng ký thành công.
+--> Làm mới ô input.
+<b>Điền tên đã đăng ký và mật khẩu bấm nút đăng nhập.</b>
+--> Kiểm tra tên và mật khẩu có khớp với đã đăng ký không.
+    --> Nếu đúng đưa người dùng tới trang Home.
+    --> Nếu sai thông báo đăng nhập lại.
 </pre>
-<li><h6>Mua hàng</h6></li>
-<li>Bán hàng</li>
-<li>Chiết khấu</li>
+    <b><li>Phân hệ mua hàng</li></b>
+<pre>
+<i>Mục đích: Cho phép người dùng nhập thông tin hàng hóa của mỗi lần nhập hàng.
+        Và đưa dữ liệu về <b>sản phẩm</b> vào quản lý bởi đối tượng <b>"ProductManager"</b></i>
+        Lưu dữ liệu về <b>đơn mua hàng "Purchase"</b> vào quản lý đơn mua hàng <b>"PurchaseOrderManager".</b>
+    --> <b>Mỗi lần nhập hàng được gọi là đơn mua hàng được "Purchase" gắn một ID định danh.</b>
+        Thu thập các thông tin của 1 lần nhập hàng bao gồm:
+            - Ngày tháng, Mã hàng, Tên hàng, Số IMEI, Mô tả sản phẩm, Số lượng nhập, Giá nhập, Hình ảnh.
+    --> <b>Khi bấm lưu thông tin.</b>
+        Thông tin hệ thống sẽ khởi tạo một đối tượng mới <i>"Product".</i>
+        Đồng thời gọi tới phương thức <i>"addProduct"</i> của đối tượng quản lý sản phẩm <i>"ProductManager"</i>
+</pre>
+    <b><li>Phân hệ bán hàng</li></b>
+    <b><li>Phân hệ quản lý kho</li></b>
+    <b><li>Phân hệ báo cáo</li></b>
+</pre>
 </ol>
     <script src="../js/user.js"></script>
     <script src="../js/product.js"></script>
@@ -106,6 +115,7 @@
     <script src="../js/promotion.js"></script>
     <script src="../js/purchase.js"></script>
     <script src="../js/stock.js"></script>
-    <script src="../js/test-case.js"></script>
+    <script src="../js/initialization.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>

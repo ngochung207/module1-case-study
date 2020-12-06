@@ -7,71 +7,99 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <ul class="nav nav-pills">
+        <li class="nav-item active">
+            <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hệ thống</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="user-info.html">Người dùng</a>
+                <a class="dropdown-item" href="#">Phân quyền</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Bảo trì dữ liệu</a>
+                <a class="dropdown-item" href="#">Khóa dữ liệu</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Tiện ích</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mua hàng</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="mua-hang.html">Nhập mua mới</a>
+                <a class="dropdown-item" href="#">Nhập hàng trả lại</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="bao-cao-mua-hang.html">Báo cáo giá nhập mua</a>
+                <a class="dropdown-item" href="#">Báo cáo hàng trả lại</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Bán hàng</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="./ban-le.html">Bán lẻ</a>
+                <a class="dropdown-item" href="#">Bán buôn</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="bao-cao-ban-hang.html">Báo cáo bán hàng theo giá bán</a>
+                <a class="dropdown-item" href="#">Báo cáo bán hàng theo mặt hàng</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Khuyến mãi</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Chương trình khuyến mãi</a>
+                <a class="dropdown-item" href="#">Quản lý khuyến mãi</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Báo cáo giá trị khuyến mãi</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Báo cáo</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Báo cáo nhập xuất tồn</a>
+                <a class="dropdown-item" href="#">Bán cáo kết quả kinh doanh</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Bảo hành</a>
+                <a class="dropdown-item" href="#">Báo cáo hàng bảo hành</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+        </li>
+    </ul>
 </head>
 <body>
-<ul class="nav nav-pills">
-    <li class="nav-item active">
-        <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hệ thống</a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="user-info.html">Người dùng</a>
-            <a class="dropdown-item" href="#">Phân quyền</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Bảo trì dữ liệu</a>
-            <a class="dropdown-item" href="#">Khóa dữ liệu</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Tiện ích</a>
-        </div>
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mua hàng</a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="mua-hang.html">Nhập mua mới</a>
-            <a class="dropdown-item" href="#">Nhập hàng trả lại</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="bao-cao-mua-hang.html">Báo cáo giá nhập mua</a>
-            <a class="dropdown-item" href="#">Báo cáo hàng trả lại</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Bán hàng</a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="./ban-le.html">Bán lẻ</a>
-            <a class="dropdown-item" href="#">Bán buôn</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="bao-cao-ban-hang.html">Báo cáo bán hàng theo giá bán</a>
-            <a class="dropdown-item" href="#">Báo cáo bán hàng theo mặt hàng</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Khuyến mãi</a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Chương trình khuyến mãi</a>
-            <a class="dropdown-item" href="#">Quản lý khuyến mãi</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Báo cáo giá trị khuyến mãi</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Báo cáo</a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Báo cáo nhập xuất tồn</a>
-            <a class="dropdown-item" href="#">Bán cáo kết quả kinh doanh</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Bảo hành</a>
-            <a class="dropdown-item" href="#">Báo cáo hàng bảo hành</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-    </li>
-</ul>
+<div>
+    <lable><b>KHO SẢN PHẨM</b></lable>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Tên</th>
+            <th scope="col">Mô tả</th>
+            <th scope="col">Hình ảnh</th>
+            <th scope="col">Giá bán</th>
+            <th scope="col">Mua</th>
+            <th scope="col">Option</th>
+        </tr>
+        </thead>
+        <tbody id="list">
+        </tbody>
+    </table>
+</div>
+<script src="../js/user.js"></script>
+<script src="../js/product.js"></script>
+<script src="../js/order.js"></script>
+<script src="../js/promotion.js"></script>
+<script src="../js/purchase.js"></script>
+<script src="../js/stock.js"></script>
+<script src="../js/main.js"></script>
+<script>
+    showAllProduct();
+</script>
 </body>
 </html>

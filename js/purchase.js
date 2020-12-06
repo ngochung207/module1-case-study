@@ -1,4 +1,4 @@
-class Purchase{
+    class Purchase{
     // Mã mua hàng, mua ngày nào, mua cái gì
     constructor(_id, _date) {
         this.id = _id;

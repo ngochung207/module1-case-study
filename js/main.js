@@ -1,23 +1,3 @@
-function uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-    });
-}
-
-// Khởi tạo các biến làm việc
-const today = new Date();
-const time = today.getDate() +"/" + (today.getMonth()+1) + "/" + today.getFullYear()
-// Khởi tạo đối tượng quản lý người dùng
-let userManager = new UserInfo();
-// Khởi tạo đối tượng quản lý sản phẩm
-let productManager = new ProductManager();
-// Khởi tạo đối tượng quản lý giỏ hàng.
-let cartManager = new OrderManager();
-// Khởi tạo đối tượng quản lý mua hàng.
-let purchaseOrderManager = new PurchaseOrderManager();
-
-
 function buttonSignUp(user_text, pass_text){
     /** Tạo nút đăng ký
      * thêm dữ liệu người dùng vào dataManagerUser
@@ -27,6 +7,7 @@ function buttonSignUp(user_text, pass_text){
     clearInput();
     alert('Dang ky thanh cong')
 }
+
 function clearInput(){
     /**
      * Làm mới ô đăng nhập
@@ -34,6 +15,7 @@ function clearInput(){
     document.getElementById('email').value = ''
     document.getElementById('pwd').value = ''
 }
+
 function buttonLogin(user_text, pass_text){
     /**
      *  Tạo nút đăng nhập
@@ -47,12 +29,14 @@ function buttonLogin(user_text, pass_text){
     }
     clearInput();
 }
+
 function getFileName(){
     let fileElement = document.getElementById('strImg');
     let nameImg = fileElement.files[0].name;
     let srcElement = document.getElementById('img');
     srcElement.src = "../image/" + nameImg;
 }
+
 function getValueOfPurchase(){
     let info_date = document.getElementById('formGroupExampleInput7').value;
     let info_code = document.getElementById('formGroupExampleInput').value
@@ -107,6 +91,7 @@ function saveInfo(){
 
         let purchase = new Purchase(uuidv4(),info.date);
         purchase.purchaseOrder(product);
+        addToLocalStorage(purchase)
 
         purchaseOrderManager.addProduct(purchase);
         refresh();
@@ -116,3 +101,27 @@ function saveInfo(){
     }
 }
 
+function addToLocalStorage(pr){
+    localStorage.setItem(pr.id,JSON.stringify(pr))
+}
+
+function showAllProduct(){
+    let content="";
+    let arr;
+    for (let i = 0; i < localStorage.length; i++) {
+        arr = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        content += '         <tr>\n' +
+        '    <th scope="row">' + (parseInt(i)+1) + '</th>\n' +
+        '    <td>' + arr.detail[0].name +'</td>\n' +
+        '    <td>' + arr.detail[0].description + '</td>\n' +
+        '    <td><img src=' + arr.detail[0].img +' alt=""></td>\n' +
+        '    <td>' + arr.detail[0].price + '</td>\n' +
+        '    <td><button>Mua</button></td>\n' +
+        '    <td>\n' +
+        '        <button style="width: 60px; margin-right: 10px">Edit</button>\n' +
+        '        <button style="width: 60px">Delete</button>\n' +
+        '    </td>\n' +
+        '</tr>'
+    }
+    document.getElementById("list").innerHTML= content;
+}
