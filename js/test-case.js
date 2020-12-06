@@ -21,23 +21,38 @@ console.log(newP2)
 let managerProduct = new ProductManager();	// Tạo mới quản lý sản phẩm
 managerProduct.addProduct(newP1);
 managerProduct.addProduct(newP2);
-console.log("Object quan ly san pham")
+console.log("Object quản lý sản phẩm")
 console.log(managerProduct)
+// Test quản lý nhập hàng
+// Khởi tạo đơn mua hàng 1
+let purchase1 = new Purchase(uuidv4(),"2020-12-10");
+purchase1.purchaseOrder(newP1)
+console.log("Đơn mua hàng 1:")
+console.log(purchase1)
+let purchaseOrderManager = new PurchaseOrderManager();
+purchaseOrderManager.addProduct(purchase1)
+let purchase2 = new Purchase(uuidv4(),"2020-12-12");
+purchase2.purchaseOrder(newP2);
+console.log("Đơn mua hàng 2:")
+console.log(purchase2)
+purchaseOrderManager.addProduct(purchase1)
+console.log("Quản lý đơn mua hàng")
+console.log(purchaseOrderManager)
 // Test class Cart
 let newCart1 = new Cart(uuidv4(), time);
 let newCart2 = new Cart(uuidv4(), time);
 // Thêm hàng vào giỏ hàng
 newCart1.getAddCart(newP1.code, newP1.name, 2)
 newCart2.getAddCart(newP2.code, newP2.name, 10)
-console.log("Thong tin gio hang 1")
+console.log("Thông tin giỏ hàng 1")
 console.log(newCart1)
-console.log("Thong tin gio hang 2")
+console.log("Thông tin giỏ hàng 2")
 console.log(newCart2)
 // Tạo ông quản lý giỏ hàng
 let orderManager = new OrderManager();
 orderManager.addToOrderManager(newCart1);
 orderManager.addToOrderManager(newCart2);
-console.log("Quan ly gio hang")
+console.log("Quản lý đặt hàng")
 console.log(orderManager)
 // Test class OrderManager
 // Tạo mới quản lý các đơn hàng từ giỏ hàng.
