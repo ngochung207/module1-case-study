@@ -116,7 +116,7 @@ function showAllProduct(){
         '    <td>' + arr.detail[0].description + '</td>\n' +
         '    <td><img src=' + arr.detail[0].img +' alt=""></td>\n' +
         '    <td>' + arr.detail[0].price + '</td>\n' +
-        '    <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dialog1">Mua</button></td>\n' +
+        '    <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dialog1" onclick="ref();">Mua</button></td>\n' +
         '    <td>\n' +
         '        <button style="width: 60px; margin-right: 10px" class="btn btn-primary btn-sm">Edit</button>\n' +
         '        <button style="width: 70px" class="btn btn-primary btn-sm">Delete</button>\n' +
@@ -140,4 +140,11 @@ function payment_(){
         document.getElementById('purchase').innerHTML = current.format(0)
         document.getElementById('payment').innerHTML = current.format(0)
     }
+}
+
+function ref(){
+    document.getElementById('amount').value = ''
+    document.getElementById('price').innerHTML = ''
+    document.getElementById('purchase').innerHTML = ''
+    document.getElementById('payment').innerHTML = ''
 }
