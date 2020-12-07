@@ -114,21 +114,23 @@ function saveInfo(){
 }
 
 function saveProductCatalog(code, name, description, img){
-    // Tạo mới đối tượng danh mục sản phẩm
-    let productCatalog = new ProductCatalog(code, name, description, img);
-    // Đưa đối tượng vào quản lý danh mục sản phẩm.
-    productCatalogManager.addProductCatalog(productCatalog)
-    // Lưu dữ liệu quản lý danh mục sản phẩm vào local storage
-    addToLocalStorage('productCatalogManager', productCatalogManager)
+    if (!checkCodeInArr(code, getLocalStorage('productCatalogManager'))) {
+        // Tạo mới đối tượng danh mục sản phẩm
+        let productCatalog = new ProductCatalog(code, name, description, img);
+        // Đưa đối tượng vào quản lý danh mục sản phẩm.
+        productCatalogManager.addProductCatalog(productCatalog)
+        // Lưu dữ liệu quản lý danh mục sản phẩm vào local storage
+        addToLocalStorage('productCatalogManager', productCatalogManager)
 
+        document.getElementById('formGroupExampleInput').value = '';
+        document.getElementById('formGroupExampleInput2').value = '';
 
-    document.getElementById('formGroupExampleInput').value = '';
-    document.getElementById('formGroupExampleInput2').value = '';
+        document.getElementById('formGroupExampleInput6').value = '';
 
-    document.getElementById('formGroupExampleInput6').value = '';
-
-    document.getElementById('img').src = "../image/default-image.jpg"
-
+        document.getElementById('img').src = "../image/default-image.jpg"
+    } else {
+        confirm('Mã hàng ' + code + ' đã tồn tại');
+    }
 }
 
 function addToLocalStorage(key,arr){
@@ -143,15 +145,17 @@ function showAllProduct(){
      * TODO lấy dữ liệu giá bán theo ngày mua.
      */
     let content="";
-    let arrManagerInventory = JSON.parse(localStorage.getItem('importExportInventoryManager'))['detail'];
+    let arrManagerInventory = getLocalStorage('importExportInventoryManager');
     let list = getListCodeProductInventory(arrManagerInventory);
     for (let i = 0; i < list.length; i++) {
+        let code = list[i];
+        let info = findInfoProduct(code, getLocalStorage('productCatalogManager'))
         if (getInventory(list[i], 'N', arrManagerInventory) - getInventory(list[i], 'X', arrManagerInventory) > 0) {
             content += '         <tr>\n' +
                 '    <th scope="row">' + (parseInt(i) + 1) + '</th>\n' +
-                '    <td>' + arrManagerInventory[i].name + '</td>\n' +
-                '    <td>' + arrManagerInventory[i].description + '</td>\n' +
-                '    <td><img src=' + arrManagerInventory[i].img + ' alt=""></td>\n' +
+                '    <td>' + info[1] + '</td>\n' +
+                '    <td>' + info[2] + '</td>\n' +
+                '    <td><img src=' + info[3] + ' alt=""></td>\n' +
                 '    <td>' + arrManagerInventory[i].price + '</td>\n' +
                 '    <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dialog1" onclick="ref();">Mua</button></td>\n' +
                 '    <td>\n' +
@@ -238,4 +242,42 @@ function getListCodeProductInventory(arr){
         }
     })
     return result;
+}
+
+function getLocalStorage(key){
+    if(localStorage.getItem(key) == null){
+        return [];
+    } else {
+        return JSON.parse(localStorage.getItem(key))['detail'];
+    }
+}
+
+function checkCodeInArr(key, arr){
+    // arr.some(function(element){
+    //     return element.code === key;
+    // })
+    for (let i = 0; i < arr.length; i++){
+        if(arr[i].code === key){
+            return true;
+        }
+    }
+    return false;
+}
+
+function findInfoProduct(code, key){
+    let arr = getLocalStorage(key);
+    let result = [];
+    for (let i = 0; i < arr.length; i++){
+        if (arr[i].code === code){
+            result.push(arr[i].code, arr[i].name, arr[i].description, arr[i].img);
+            break;
+        }
+    } return result;
+}
+function showInfo(code, key){
+    let arr = findInfoProduct(code, key);
+    document.getElementById("formGroupExampleInput2").value = arr[1];
+    document.getElementById("formGroupExampleInput6").value = arr[2];
+    document.getElementById("img").src = arr[3];
+
 }
