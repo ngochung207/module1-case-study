@@ -106,6 +106,12 @@ function addToLocalStorage(pr){
 }
 
 function showAllProduct(){
+    /**
+     *
+     * Lấy từ Location Storage các sản phẩm
+     * TODO bổ sung tính năng, chỉ cho phép hiển thị các mặt hàng còn tồn.
+     * TODO lấy dữ liệu giá bán theo ngày mua.
+     */
     let content="";
     let arr;
     for (let i = 0; i < localStorage.length; i++) {
@@ -127,6 +133,9 @@ function showAllProduct(){
 }
 
 function payment_(){
+    /**
+     *TODO áp dụng chính sách giá và chính sách chiết khấu
+     */
     let current = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' });
     let mount = parseInt(document.getElementById('amount').value);
     if (mount > 0) {
@@ -144,8 +153,36 @@ function payment_(){
 }
 
 function ref(){
+    /**
+     * Làm mới ô chọn mua khi mua tiếp hàng.
+     */
     document.getElementById('amount').value = ''
     document.getElementById('price').innerHTML = ''
     document.getElementById('purchase').innerHTML = ''
     document.getElementById('payment').innerHTML = ''
+}
+
+function showTablePrice(){
+    /**
+     * Cho phép Admin nhập chính sách giá bán
+     */
+    let content="";
+    let arr;
+    for (let i = 0; i < localStorage.length; i++) {
+        arr = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        content +='<tr>\n'+
+                    '<th scope="row">' + (parseInt(i)+1) + '</th>\n' +
+                    '<td>' + arr.detail[0].name + '</td>\n' +
+                    '<td>' + arr.detail[0].description + '</td>\n' +
+                    '<td><img src=' + arr.detail[0].img +' alt=""></td>\n' +
+                    '<td><input type="date"></td>' +
+                    '<td><input type="date"></td>' +
+                    '<td><input type="number"></td>' +
+                    '<td>\n' +
+                        '<button style="margin-right: 10px" class="btn btn-primary btn-sm">Apply</button>' +
+                        '<button class="btn btn-primary btn-sm">Edit</button>' +
+                    '</td>\n' +
+                    '<tr>'
+    }
+    document.getElementById("list-price-policy").innerHTML= content;
 }
