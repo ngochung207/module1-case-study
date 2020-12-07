@@ -149,8 +149,8 @@ function showAllProduct(){
     let list = getListCodeProductInventory(arrManagerInventory);
     for (let i = 0; i < list.length; i++) {
         let code = list[i];
-        let info = findInfoProduct(code, getLocalStorage('productCatalogManager'))
-        if (getInventory(list[i], 'N', arrManagerInventory) - getInventory(list[i], 'X', arrManagerInventory) > 0) {
+        let info = findInfoProduct(code, 'productCatalogManager')
+        if (getInventory(code, 'N', arrManagerInventory) - getInventory(code, 'X', arrManagerInventory) > 0) {
             content += '         <tr>\n' +
                 '    <th scope="row">' + (parseInt(i) + 1) + '</th>\n' +
                 '    <td>' + info[1] + '</td>\n' +
