@@ -16,3 +16,27 @@ class Stock{
     }
 
 }
+class ImportExportInventory {
+    /**
+     * Ý nghĩa: Là một mảng quản lý mã hàng, tổng nhập, tổng xuất, tồn cuối của sản phẩm.
+     * Quản lý nhập xuất tồn của kho hàng.
+     *
+     */
+    constructor(purchase, _type) {
+        this.id = purchase.id;
+        this.type = _type;
+        this.date = purchase.date;
+        this.code = purchase.detail[0].code;
+        this.amount = purchase.detail[0].amount;
+    }
+
+}
+class ImportExportInventoryManager{
+    constructor(){
+        this.detail = [];
+    }
+
+    addToImportExportManager(importExportInventory){
+        this.detail.push(importExportInventory)
+    }
+}

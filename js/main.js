@@ -39,12 +39,12 @@ function getFileName(){
 
 function getValueOfPurchase(){
     let info_date = document.getElementById('formGroupExampleInput7').value;
-    let info_code = document.getElementById('formGroupExampleInput').value
-    let info_name = document.getElementById('formGroupExampleInput2').value
-    let info_imei = document.getElementById('formGroupExampleInput3').value
-    let info_description = document.getElementById('formGroupExampleInput6').value
-    let info_amount = document.getElementById('formGroupExampleInput4').value
-    let info_cost = document.getElementById('formGroupExampleInput5').value
+    let info_code = document.getElementById('formGroupExampleInput').value;
+    let info_name = document.getElementById('formGroupExampleInput2').value;
+    let info_imei = document.getElementById('formGroupExampleInput3').value;
+    let info_description = document.getElementById('formGroupExampleInput6').value;
+    let info_amount = parseInt(document.getElementById('formGroupExampleInput4').value);
+    let info_cost = parseInt(document.getElementById('formGroupExampleInput5').value);
     let info_img = document.getElementById('img').src;
     return {date:info_date,code:info_code,name:info_name,imei:info_imei,description:info_description,amount:info_amount,cost:info_cost,img:info_img}
 }
@@ -79,21 +79,33 @@ function refresh(){
     document.getElementById('formGroupExampleInput6').value = '';
     document.getElementById('formGroupExampleInput4').value = '';
     document.getElementById('formGroupExampleInput5').value = '';
-    document.getElementById('img').src = '';
+    document.getElementById('img').src = '../image/default-image.jpg';
 }
 
 function saveInfo(){
-    if (checkInput()) {
+    if (checkInput()){
         let info = getValueOfPurchase();
-
+        // Khởi tạo đối tượng sản phẩm
         let product = new Product(info.code, info.imei, info.name, info.description, info.img, '', info.amount, '', info.cost);
-        productManager.addProduct(product);
-
         let purchase = new Purchase(uuidv4(),info.date);
         purchase.purchaseOrder(product);
-        addToLocalStorage(purchase)
-
+        // Thêm đối tượng sản phẩm vào đối tượng quản lý mua hàng
         purchaseOrderManager.addProduct(purchase);
+        // Thêm sản phẩm vào đối tượng quản lý sản phẩm.
+        // productManager.addProduct(product);
+        // Thêm sản phẩm vào đối tượng quản lý nhập xuất kho.
+        let importExportInventory = new ImportExportInventory(purchase,'N');
+        importExportInventoryManager.addToImportExportManager(importExportInventory);
+
+        addToLocalStorage('purchaseOrderManager',purchaseOrderManager);
+        // addToLocalStorage('productManager',productManager);
+        addToLocalStorage('importExportInventoryManager',importExportInventoryManager);
+        // // Khởi tạo biến lưu quản lý đơn
+        // let arr = new Array();
+        // arr.push(purchaseOrderManager,productManager,importExportInventoryManager)
+        // // Lưu dữ liệu vào Local Storage
+        // addToLocalStorage(purchase,arr);
+        // // Làm mới nhập liệu
         refresh();
 
     } else {
@@ -101,8 +113,26 @@ function saveInfo(){
     }
 }
 
-function addToLocalStorage(pr){
-    localStorage.setItem(pr.id,JSON.stringify(pr))
+function saveProductCatalog(code, name, description, img){
+    // Tạo mới đối tượng danh mục sản phẩm
+    let productCatalog = new ProductCatalog(code, name, description, img);
+    // Đưa đối tượng vào quản lý danh mục sản phẩm.
+    productCatalogManager.addProductCatalog(productCatalog)
+    // Lưu dữ liệu quản lý danh mục sản phẩm vào local storage
+    addToLocalStorage('productCatalogManager', productCatalogManager)
+
+
+    document.getElementById('formGroupExampleInput').value = '';
+    document.getElementById('formGroupExampleInput2').value = '';
+
+    document.getElementById('formGroupExampleInput6').value = '';
+
+    document.getElementById('img').src = "../image/default-image.jpg"
+
+}
+
+function addToLocalStorage(key,arr){
+    localStorage.setItem(key,JSON.stringify(arr));
 }
 
 function showAllProduct(){
@@ -113,21 +143,23 @@ function showAllProduct(){
      * TODO lấy dữ liệu giá bán theo ngày mua.
      */
     let content="";
-    let arr;
-    for (let i = 0; i < localStorage.length; i++) {
-        arr = JSON.parse(localStorage.getItem(localStorage.key(i)));
-        content += '         <tr>\n' +
-        '    <th scope="row">' + (parseInt(i)+1) + '</th>\n' +
-        '    <td>' + arr.detail[0].name +'</td>\n' +
-        '    <td>' + arr.detail[0].description + '</td>\n' +
-        '    <td><img src=' + arr.detail[0].img +' alt=""></td>\n' +
-        '    <td>' + arr.detail[0].price + '</td>\n' +
-        '    <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dialog1" onclick="ref();">Mua</button></td>\n' +
-        '    <td>\n' +
-        '        <button style="width: 60px; margin-right: 10px" class="btn btn-primary btn-sm">Edit</button>\n' +
-        '        <button style="width: 70px" class="btn btn-primary btn-sm">Delete</button>\n' +
-        '    </td>\n' +
-        '</tr>'
+    let arrManagerInventory = JSON.parse(localStorage.getItem('importExportInventoryManager'))['detail'];
+    let list = getListCodeProductInventory(arrManagerInventory);
+    for (let i = 0; i < list.length; i++) {
+        if (getInventory(list[i], 'N', arrManagerInventory) - getInventory(list[i], 'X', arrManagerInventory) > 0) {
+            content += '         <tr>\n' +
+                '    <th scope="row">' + (parseInt(i) + 1) + '</th>\n' +
+                '    <td>' + arrManagerInventory[i].name + '</td>\n' +
+                '    <td>' + arrManagerInventory[i].description + '</td>\n' +
+                '    <td><img src=' + arrManagerInventory[i].img + ' alt=""></td>\n' +
+                '    <td>' + arrManagerInventory[i].price + '</td>\n' +
+                '    <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dialog1" onclick="ref();">Mua</button></td>\n' +
+                '    <td>\n' +
+                '        <button style="width: 60px; margin-right: 10px" class="btn btn-primary btn-sm">Edit</button>\n' +
+                '        <button style="width: 70px" class="btn btn-primary btn-sm">Delete</button>\n' +
+                '    </td>\n' +
+                '</tr>'
+        }
     }
     document.getElementById("list").innerHTML= content;
 }
@@ -185,4 +217,25 @@ function showTablePrice(){
                     '<tr>'
     }
     document.getElementById("list-price-policy").innerHTML= content;
+}
+
+function getInventory(key, type, arr){
+    let sum = 0;
+    for(let i=0; i < arr.length; i++){
+        if(arr[i].code === key && arr[i].type === type){
+            sum += parseInt(arr[i].amount)
+        }
+    }
+    return sum
+}
+
+function getListCodeProductInventory(arr){
+    // Lấy ra danh sách mã sản phẩm trong kho.
+    let result = [];
+    arr.forEach(function(element){
+        if (!result.includes(element.code)){
+            result.push(element.code)
+        }
+    })
+    return result;
 }

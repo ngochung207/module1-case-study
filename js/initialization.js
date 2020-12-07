@@ -9,9 +9,13 @@ const today = new Date();
 const time = today.getDate() +"/" + (today.getMonth()+1) + "/" + today.getFullYear()
 // Khởi tạo đối tượng quản lý người dùng
 let userManager = new UserInfo();
+// Khởi tạo đối tượng danh mục sản phẩm
+let productCatalogManager = new ProductCatalogManager();
 // Khởi tạo đối tượng quản lý sản phẩm
 let productManager = new ProductManager();
 // Khởi tạo đối tượng quản lý giỏ hàng.
 let cartManager = new OrderManager();
 // Khởi tạo đối tượng quản lý mua hàng.
 let purchaseOrderManager = new PurchaseOrderManager();
+// Khởi tạo đối tượng quản lý nhập xuất.
+let importExportInventoryManager = new ImportExportInventoryManager();

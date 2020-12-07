@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mua hàng</title>
+    <title>Danh mục sản phẩm</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -71,15 +71,14 @@
             </div>
         </li>
     </ul>
+
 </head>
 <body>
-<div style="display: flex" id="gr1">
-    <fieldset style="margin: 20px">
+<h4 style="margin-top: 30px; margin-left: 50px">Danh mục sản phẩm</h4>
+<div style="display: flex; width: 50%; justify-content: space-between; align-items: flex-end; margin-top: 20px; margin-left: 50px" id="gr1">
+    <div style="height: 296px">
         <legend style="font-family: 'Tahoma'; font-size: 20px">Thông tin chung:</legend>
-        <div class="form-group">
-            <label for="formGroupExampleInput7">Ngày nhập</label>
-            <input type="date" class="form-control" id="formGroupExampleInput7" placeholder="dd/mm/yyyy">
-        </div>
+
         <div class="form-group">
             <label for="formGroupExampleInput">Mã hàng</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="HH001">
@@ -88,39 +87,25 @@
             <label for="formGroupExampleInput2">Tên hàng</label>
             <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nokia 110i">
         </div>
-        <div class="form-group">
-            <label for="formGroupExampleInput3">IMEI</label>
-            <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="45694-0294-002-01">
-        </div>
+
         <div class="form-group">
             <label for="formGroupExampleInput6">Mô tả sản phẩm</label>
             <input type="text" class="form-control" id="formGroupExampleInput6" placeholder="Color: Black">
         </div>
-    </fieldset>
-    <fieldset style="margin: 20px">
-        <legend style="font-family: 'Tahoma'; font-size: 20px">Thông tin nhận hàng:</legend>
-        <div class="form-group" style="width: 320px">
-            <label for="formGroupExampleInput4">Số lượng nhập</label>
-            <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Số lượng thực nhập">
-        </div>
-        <div class="form-group input-group mb-3" style="margin-top: 48px; width: 320px">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Giá nhập vào</span>
-            </div>
-            <input type="text" class="form-control" id="formGroupExampleInput5" aria-label="Amount (to the nearest dollar)">
-            <div class="input-group-append">
-                <span class="input-group-text">.00</span>
-            </div>
-        </div>
-        <div class="card" style="width: 20rem; margin-top: 50px">
+    </div>
+    <div style="height: 296px">
+        <legend style="font-family: 'Tahoma'; font-size: 20px">Hình ảnh sản phẩm</legend>
+
+        <div class="card" style="width: 20rem; margin-top: 36px">
             <img id="img" src= "../image/default-image.jpg" class="img-thumbnail" alt="">
             <div>
                 <input type="file" class="btn btn-secondary" id="strImg" accept=".jpg,.png" onchange="getFileName();" multiple/>
             </div>
         </div>
-    </fieldset>
-    <div style="margin-top: 440px">
-        <button type="button" class="btn btn-warning" onclick="saveInfo();">Lưu thông tin</button>
+
+    </div>
+    <div style="display: flex; align-items: flex-end ; heigth: 296px">
+        <button type="button" class="btn btn-warning" onclick="saveProductCatalog(document.getElementById('formGroupExampleInput').value,document.getElementById('formGroupExampleInput2').value, document.getElementById('formGroupExampleInput6').value,document.getElementById('img').src);">Lưu thông tin</button>
     </div>
 </div>
 <script src="../js/user.js"></script>
@@ -129,6 +114,7 @@
 <script src="../js/promotion.js"></script>
 <script src="../js/purchase.js"></script>
 <script src="../js/stock.js"></script>
+<script src="../js/product-catalog.js"></script>
 <script src="../js/initialization.js"></script>
 <script src="../js/main.js"></script>
 </body>
