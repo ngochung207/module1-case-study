@@ -139,6 +139,7 @@ function payment_(){
         document.getElementById('price').innerHTML = current.format(0)
         document.getElementById('purchase').innerHTML = current.format(0)
         document.getElementById('payment').innerHTML = current.format(0)
+
     }
 }
 
